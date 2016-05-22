@@ -1,11 +1,13 @@
 ---
 - name: Install nginx
   apt: name=nginx state=present
+
 - name: Copy across virtual host config
   template:
     src=templates/nginx.conf.j2
-    dest=/etc/nginx/sites-enabled/{{url}}
+    dest=/etc/nginx/sites-enabled/{{app_name}}
   notify: reload nginx
+
 - name: Remove default conf
   file:
     path=/etc/nginx/sites-enabled/default

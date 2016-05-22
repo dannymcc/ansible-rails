@@ -1,0 +1,6 @@
+---
+
+ruby_version: 2.3.1
+app_url: example.dev
+app_name: example
+mysql_root_password: examplepassword
