@@ -13,6 +13,7 @@
     - curl
     - htop
     - git
+    - ufw
     - nodejs
     - build-essential
     - zlib1g-dev
