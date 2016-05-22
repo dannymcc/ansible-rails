@@ -10,7 +10,6 @@
     ruby_version: 2.3.1
   roles:
     - common
-    # - initial
-    # - nginx
-    # -
-    # - redis
+    - nginx
+    - mysql
+    - redis
