@@ -1,0 +1,16 @@
+---
+- hosts: local
+  become: true
+  # remote_user: vagrant
+  # a set of variables for this app
+  vars:
+    url: project.dev
+    document_root: /var/www
+    mysql_root_password: password123
+    ruby_version: 2.3.1
+  roles:
+    - common
+    # - initial
+    # - nginx
+    # -
+    # - redis

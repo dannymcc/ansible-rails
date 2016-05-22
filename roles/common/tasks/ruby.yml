@@ -1,0 +1,18 @@
+---
+
+- name: Send Ruby install script
+  copy: src=./roles/common/files/install-ruby-{{ruby_version}}.sh dest=/root/install-ruby-{{ruby_version}}.sh
+  args:
+    mode: 0700
+
+- name: Install Ruby {{ruby_version}} from source
+  command: /root/install-ruby-{{ruby_version}}.sh
+  become: true
+  become_method: sudo
+  args:
+    creates: /usr/local/bin/ruby
+
+- name: Install bundler
+  command: gem install bundler
+  args:
+    creates: /usr/local/bin/bundle

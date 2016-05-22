@@ -1,0 +1,23 @@
+---
+- name: Install MySQL
+  apt: name={{item}} state=present
+  with_items:
+    - mysql-server
+    - mysql-client
+    - python-mysqldb      # Required for setting the root user password below
+    - libmysqlclient-dev  # Required for the mysql2 gem
+
+- name: Set root user password
+  # If .my.cnf already exists, this will cause an mysql-root-password update.
+  mysql_user:
+    name: root
+    password: "{{mysql_root_password}}"
+    check_implicit_admin: true
+
+- name: Create .my.cnf
+  template:
+   src: "templates/client.my.cnf.j2"
+   dest: "/root/.my.cnf"
+   owner: root
+   group: root
+   mode: 0600

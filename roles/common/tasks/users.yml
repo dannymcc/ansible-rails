@@ -1,0 +1,7 @@
+---
+
+- name: Create deploy user
+  user: name=deploy
+  args:
+    shell: /bin/bash
+    home: /opt/apps

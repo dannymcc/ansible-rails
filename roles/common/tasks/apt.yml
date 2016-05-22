@@ -1,0 +1,34 @@
+---
+
+- name: Update apt cache
+  apt: update_cache=yes
+
+- name: Update all packages
+  apt: upgrade=dist
+
+- name: Install dependencies and tools
+  apt: name={{item}} state=present
+  with_items:
+    - wget
+    - curl
+    - htop
+    - git
+    - nodejs
+    - build-essential
+    - zlib1g-dev
+    - libssl-dev
+    - libreadline-dev
+    - libyaml-dev
+    - libsqlite3-dev
+    - sqlite3
+    - libxml2-dev
+    - libxslt1-dev
+    - libcurl4-openssl-dev
+    - python-software-properties
+    - libffi-dev
+
+- name: Install ImageMagick
+  apt: name={{item}} state=present
+  with_items:
+    - imagemagick
+    - libmagickwand-dev
